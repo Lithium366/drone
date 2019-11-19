@@ -1,6 +1,6 @@
 kind: pipeline
 
-pipeline:
+steps:
   install:
     image: node:12-alpine
     commands:
