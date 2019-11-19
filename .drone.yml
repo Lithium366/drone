@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-  - name: build
+  - name: test
     image: node:12-alpine
     commands:
       - npm ci
