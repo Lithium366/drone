@@ -8,3 +8,8 @@ steps:
       - npm ci
       - npm run test
       - npm run lint
+trigger:
+  ref:
+    - refs/heads/master
+    - refs/heads/**
+    - refs/pull/*/head
