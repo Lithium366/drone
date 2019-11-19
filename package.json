@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint *.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,8 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-plugin-jest": "^23.0.4",
     "jest": "^24.9.0"
   }
 }

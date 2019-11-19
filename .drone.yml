@@ -7,3 +7,4 @@ steps:
     commands:
       - npm ci
       - npm run test
+      - npm run lint
