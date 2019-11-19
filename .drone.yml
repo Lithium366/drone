@@ -1,0 +1,9 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: frontend
+    image: node:12-alpine
+    commands:
+      - npm ci
+      - npm run test
