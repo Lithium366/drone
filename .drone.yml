@@ -1,7 +1,20 @@
-pipeline:
-  build:
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build
     image: node:12-alpine
     commands:
       - npm ci
       - npm run test
       - npm run lint
+  - name: publish
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: lithium366/react-typescript
+      tags: latest
