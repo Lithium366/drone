@@ -7,24 +7,20 @@ steps:
     image: node:12-alpine
     commands:
       - npm ci
-      - ls -la
-  - name: build
+  - name: test
     image: node:12-alpine
-    commands:
-      - npm run build:client
-      - npm run build:server
-      - ls -la
-  - name: testing
-    image: node:12-alpine
-    group: testing
     commands:
       - ls
       - npm run test
   - name: lint
     image: node:12-alpine
-    group: testing
     commands:
       - npm run lint
+  - name: build
+    image: node:12-alpine
+    commands:
+      - npm run build:client
+      - npm run build:server
   - name: publish
     image: plugins/docker
     settings:
