@@ -3,18 +3,29 @@ type: docker
 name: default
 
 steps:
-  - name: test
+  - name: install
     image: node:12-alpine
     commands:
       - npm ci
+  - name: testing
+    image: node:12-alpine
+    group: testing
+    commands:
       - npm run test
+  - name: lint
+    image: node:12-alpine
+    group: testing
+    commands:
       - npm run lint
   - name: publish
     image: plugins/docker
     settings:
       repo: lithium366/react-typescript
-      tags: latest
+      auto_tag: true
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+    when:
+      branch:
+        - master
