@@ -3,12 +3,12 @@ name: default
 
 steps:
   - name: lint
-    image: build
+    image: node:12-alpine
     commands:
       - npm ci
       - npm run lint
   - name: test
-    image: build
+    image: node:12-alpine
     commands:
       - npm ci
       - npm run test
