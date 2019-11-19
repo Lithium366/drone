@@ -1,22 +1,7 @@
-kind: pipeline
-
-steps:
-  install:
+pipeline:
+  build:
     image: node:12-alpine
     commands:
-      - node -v
-      - npm -v
       - npm ci
-  testing:
-    image: node:12-alpine
-    group: testing
-    commands:
       - npm run test
-  lint:
-    image: node:12-alpine
-    group: testing
-    commands:
       - npm run lint
-trigger:
-  ref:
-    - refs/pull/*/head
