@@ -7,10 +7,18 @@ steps:
     image: node:12-alpine
     commands:
       - npm ci
+      - ls -la
+  - name: build
+    image: node:12-alpine
+    commands:
+      - npm run build:client
+      - npm run build:server
+      - ls -la
   - name: testing
     image: node:12-alpine
     group: testing
     commands:
+      - ls
       - npm run test
   - name: lint
     image: node:12-alpine
