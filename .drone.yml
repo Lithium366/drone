@@ -11,7 +11,7 @@ steps:
     image: node:12-alpine
     commands:
       - ls
-      - npm run test
+      - npm run test -- --coverage
   - name: lint
     image: node:12-alpine
     commands:
@@ -26,10 +26,10 @@ steps:
     settings:
       repo: lithium366/react-typescript
       auto_tag: true
-      auto_tag_suffix: react-typescript
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
     when:
+      branch: master
       events: [tag]
