@@ -7,9 +7,11 @@ steps:
     commands:
       - npm ci
   - name: lint
+    image: build
     commands:
       - npm run lint
   - name: test
+    image: build
     commands:
       - npm run test
 trigger:
