@@ -2,17 +2,15 @@ kind: pipeline
 name: default
 
 steps:
-  - name: build
-    image: node:12-alpine
-    commands:
-      - npm ci
   - name: lint
     image: build
     commands:
+      - npm ci
       - npm run lint
   - name: test
     image: build
     commands:
+      - npm ci
       - npm run test
 trigger:
   ref:
