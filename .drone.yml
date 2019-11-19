@@ -34,4 +34,4 @@ steps:
     when:
       events: [tag]
 when:
-  events: [push]
+  events: [pull_request, push]
