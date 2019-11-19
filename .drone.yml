@@ -7,28 +7,20 @@ steps:
     image: node:12-alpine
     commands:
       - npm ci
-    when:
-      events: [pull_request]
   - name: test
     image: node:12-alpine
     commands:
       - ls
       - npm run test
-    when:
-      events: [pull_request]
   - name: lint
     image: node:12-alpine
     commands:
       - npm run lint
-    when:
-      events: [pull_request]
   - name: build
     image: node:12-alpine
     commands:
       - npm run build:client
       - npm run build:server
-    when:
-      events: [pull_request]
   - name: publish
     image: plugins/docker
     settings:
