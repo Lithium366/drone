@@ -1,15 +1,16 @@
 kind: pipeline
 name: default
 
-steps:
-  - name: frontend
+pipeline:
+  build:
     image: node:12-alpine
-    commands:
-      - npm ci
-      - npm run test
-      - npm run lint
+    commands: npm ci
+  lint:
+    image: node:12-alpine
+    command: npm run lint
+  test:
+    image: node:12-alpine
+    command: npm run test
 trigger:
   ref:
-    - refs/heads/master
-    - refs/heads/**
     - refs/pull/*/head
