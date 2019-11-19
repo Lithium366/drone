@@ -32,10 +32,10 @@
     "lint": "eslint ./src/**/*.ts",
     "start": "node ./dist/server/index.js",
     "tsc": "tsc",
+    "clean": "rm -rf stats && mkdir stats && rm -rf dist",
     "build:client": "webpack --config webpack.config.client.js",
     "build:server": "webpack --config webpack.config.server.js",
-    "clean": "rm -rf stats && mkdir stats && rm -rf dist",
-    "build": "npm run clean && npm run build:client -- --profile --json > ./stats/stats.client.json && npm run build:server -- --profile --json > ./stats/stats.server.json"
+    "build:dev": "npm run clean && npm run build:client -- --profile --json > ./stats/stats.client.json && npm run build:server -- --profile --json > ./stats/stats.server.json"
   },
   "keywords": [],
   "author": "",

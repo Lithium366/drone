@@ -1,4 +1,5 @@
 kind: pipeline
+type: docker
 name: default
 
 steps:
@@ -8,3 +9,9 @@ steps:
       - npm ci
       - npm run test
       - npm run lint
+  - name: build
+    image: node:12-alpine
+    commands:
+      - npm ci
+      - npm run build:client
+      - npm run build:server
