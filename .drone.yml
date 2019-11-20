@@ -16,11 +16,6 @@ steps:
     image: node:12-alpine
     commands:
       - npm run lint
-  - name: build
-    image: node:12-alpine
-    commands:
-      - npm run build:client
-      - npm run build:server
   - name: publish
     image: plugins/docker
     settings:
@@ -31,5 +26,5 @@ steps:
       password:
         from_secret: docker_password
     when:
-      branch: master
+      branch: [refs/tags/*]
       events: [tag]
