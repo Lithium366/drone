@@ -31,5 +31,5 @@ steps:
       password:
         from_secret: docker_password
     when:
-      branch: master
+      branch: [refs/tags/*]
       events: [tag]
