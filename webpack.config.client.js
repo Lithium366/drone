@@ -1,21 +1,30 @@
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
-  entry: './src/client/index.tsx',
+  mode: process.env.NODE_ENV || 'production',
+  entry: {
+    app: ['./src/client/index.tsx']
+  },
   output: {
-    filename: 'main.js',
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist/client')
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/server/index.html'
-    })
-  ],
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          enforce: true,
+          name: 'vendor',
+          test: /node_modules/
+        }
+      }
+    }
+  },
 
   resolve: {
-    extensions: ['.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
 
   module: {
@@ -30,10 +39,5 @@ module.exports = {
         ]
       }
     ]
-  },
-
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
   }
 };
