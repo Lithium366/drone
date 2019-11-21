@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
@@ -22,14 +23,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
+        test: /\.(ts|tsx)$/,
+        include: /src/,
         use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+              plugins: ['@loadable/babel-plugin']
+            }
+          },
           {
             loader: 'ts-loader'
           }
         ]
       }
     ]
-  }
+  },
+
+  plugins: [new LoadablePlugin()]
 };

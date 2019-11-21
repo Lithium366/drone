@@ -1,6 +1,7 @@
-import { default as React, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import loadable from '@loadable/component';
+import { Switch, Route } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const Header = loadable(() =>
   import(/* webpackChunkName: 'Header' */ './components/Header')
@@ -16,15 +17,24 @@ const App = () => {
   const [showHeader, toggleHeader] = useState<boolean>(false);
 
   return (
-    <Router>
+    <div>
       {showHeader && <Header />}
-      <p onClick={() => toggleHeader(!showHeader)}>Toggle header</p>
-
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => toggleHeader(!showHeader)}
+      >
+        Toggle header
+      </Button>
       <Switch>
-        <Route exact path="/" component={Page1} />
-        <Route path="/another_page" component={Page2} />
+        <Route exact path="/">
+          <Page1 greetings="Page1" />
+        </Route>
+        <Route path="/another_page">
+          <Page2 greetings="Page2" />
+        </Route>
       </Switch>
-    </Router>
+    </div>
   );
 };
 

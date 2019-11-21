@@ -1,14 +1,8 @@
 import React from 'react';
 
-export interface Page1Props {
-  compiler: string;
-  framework: string;
+export interface tProps {
+  greetings: string;
 }
-
-const Page1 = (props: Page1Props) => (
-  <h1>
-    Hello from {props.compiler} and {props.framework}!
-  </h1>
-);
+const Page1 = ({ greetings }: tProps) => <h1>Hello from {greetings}!</h1>;
 
 export default Page1;
