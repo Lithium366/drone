@@ -1,19 +1,19 @@
 import React from 'react';
-import { get } from 'lodash';
+import get from 'lodash/get';
 
-export interface Page2Props {
-  compiler: string;
-  framework: string;
+export interface tProps {
+  greetings: string;
 }
 
 const obj = {
-  hello: 'world'
+  message: 'Hi there'
 };
 
-const Page2 = (props: Page2Props) => (
-  <h1>
-    Hello from {props.compiler} and {props.framework} + {get(obj, 'hello')}!
-  </h1>
+const Page2 = ({ greetings }: tProps) => (
+  <>
+    <h1>Hello from {greetings}!</h1>
+    <h2>{get(obj, 'message')}</h2>
+  </>
 );
 
 export default Page2;

@@ -1,10 +1,9 @@
 const path = require('path');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
-  entry: {
-    app: ['./src/client/index.tsx']
-  },
+  entry: './src/client/index.tsx',
   output: {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist/client')
@@ -39,5 +38,6 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [new LoadablePlugin()]
 };

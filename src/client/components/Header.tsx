@@ -1,17 +1,23 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { Link as ReactLink } from 'react-router-dom';
 
 const Header = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link to="/">Page 1</Link>
-      </li>
-      <li>
-        <Link to="/another_page">Page 2</Link>
-      </li>
-    </ul>
-  </nav>
+  <AppBar position="static">
+    <Toolbar>
+      <Typography>
+        <Button to="/" component={ReactLink}>
+          Page 1
+        </Button>
+        <Button to="/another_page" component={ReactLink}>
+          Page 2
+        </Button>
+      </Typography>
+    </Toolbar>
+  </AppBar>
 );
 
 export default Header;

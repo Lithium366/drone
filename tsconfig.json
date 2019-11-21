@@ -3,6 +3,7 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
+    "moduleResolution": "node",
     "module": "esnext",
     "target": "es5",
     "jsx": "react",
